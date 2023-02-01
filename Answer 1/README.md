@@ -1,3 +1,9 @@
-# Data Engineer Takehome Test
+# Data Engineer Take home Test
 
-## Answer for problem 1:
+## Answer 1 root folder:
+sample input
+
+    python3 main.py --image ./images/faces.jpg
+sample output
+
+    Detected 17 face(s)
