@@ -1,9 +1,7 @@
 import argparse
-from multiprocessing import cpu_count
 import cv2
 import os
 import numpy as np
-from PIL import Image
 from pathlib import Path
 
 CWD = os.getcwd()
@@ -12,6 +10,11 @@ CASCADE_CLASSIFIER_PATH = "./face_classifier/facedetector.xml"
 
 
 def face_detector(image_path: str) -> None:
+    """
+    Detects faces using CascadeClassifier and save into folders
+    :param image_path: path to image
+    :return: None
+    """
     if os.path.isfile(image_path):
         # configure target output dir
         image_name = image_path.replace('\\', '/').replace(".", "_").split("/")[-1]
@@ -34,7 +37,7 @@ def face_detector(image_path: str) -> None:
         for index, (x, y, w, h) in enumerate(detection_result):
             count += 1
             detected_image = np.array(image[y:y + h, x:x + w])
-            detected_image_name = os.path.join(target_folder_path, f"image_{count}.png")
+            detected_image_name = os.path.join(target_folder_path, f"face_{count}.jpg")
             cv2.imwrite(detected_image_name, detected_image)
         # summary
         print(f"Detected {len(detection_result)} face(s)")
