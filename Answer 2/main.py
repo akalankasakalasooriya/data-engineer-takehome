@@ -87,6 +87,7 @@ def main_function(source_bucket: str, destination_bucket: str) -> None:
         print(e)
     except Exception as e:
         print(e)
+    print("Done")
 
 
 if __name__ == '__main__':
